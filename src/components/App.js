@@ -59,10 +59,8 @@ class App extends React.Component {
 
   goHome() {
     if(this.state.authStatus.loggedIn) {
-      console.log('IF');
       browserHistory.push('/admin');
     } else {
-      console.log('ELSE');
       browserHistory.push('/');
     }
   }

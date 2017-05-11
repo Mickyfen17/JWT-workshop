@@ -51,7 +51,6 @@ const checkAuth = (request, response, next) => {
       // If the token is valid, save the decoded version to the
       // request for use in other routes & continue on with next()
       else {
-        console.log('decoded:', decoded);
         request.decoded = decoded;
         next();
       }
@@ -75,7 +74,6 @@ const checkAuth = (request, response, next) => {
 // Authentication/Login Endpoint
 app.post('/authenticate', (request, response) => {
   const user = request.body;
-  console.log(user);
 
   // If the user enters credentials that don't match our hard-coded
   // credentials in our .env configuration file, send a JSON error
@@ -105,8 +103,6 @@ app.get('/api/v1/trains', (request, response) => {
 });
 
 app.patch('/api/v1/trains/:id', checkAuth, (request, response) => {
-  console.log(request.body);
-  console.log(request.params);
   const { train } = request.body;
   const { id } = request.params;
   const index = app.locals.trains.findIndex((m) => m.id == id);
